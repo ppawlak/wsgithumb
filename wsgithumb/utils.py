@@ -52,8 +52,13 @@ def resize_im(src, dst, size, factor=100):
           )
     if factor != 100:
         image.rescale(factor=factor / 100.)
-    image.write(dst)
-    print image, scale, width, height, x, y
+
+    kwargs = {}
+    fname, ext = os.path.splitext(src)
+    if ext in ('.jpeg', '.jpg'):
+        kwargs['quality'] = 85
+
+    image.write(dst, **kwargs)
 
 
 def resize(src, dst, size, **kwargs):
