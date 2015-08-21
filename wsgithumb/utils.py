@@ -57,6 +57,7 @@ def resize_im(src, dst, size, factor=100):
     fname, ext = os.path.splitext(src)
     if ext in ('.jpeg', '.jpg'):
         kwargs['quality'] = 85
+        kwargs['strip'] = True
 
     image.write(dst, **kwargs)
 
